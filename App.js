@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -28,12 +28,22 @@ import {
 import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
+import API from './src/utils/api';
 
 const App: () => React$Node = () => {
+  console.log('1122')
+  debugger
+  useEffect(() => {
+    async function fetchData() {
+      const movies = await API.getSuggestion(10);
+    }
+    console.log('hi')
+    fetchData();
+  }, []);
   return (
     <Home>
       <Header />
-      <Text>buscador</Text>
+      <Text>buscador...1</Text>
       <Text>categorías</Text>
       <SuggestionList />
     </Home>
