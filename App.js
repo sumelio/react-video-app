@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -28,16 +28,24 @@ import {
 import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
+import CategoryList from './src/videos/containers/category-list.js';
+
 import API from './src/utils/api';
 
 const App: () => React$Node = () => {
-  console.log('1122')
-  debugger
+  const [movies, setMovies] = useState([]);
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
-    async function fetchData() {
-      const movies = await API.getSuggestion(10);
-    }
-    console.log('hi')
+    const fetchData = async () => {
+      const [movieList, categoryList] = await Promise.all([
+        API.getSuggestion(10),
+        API.getMovies(),
+      ]);
+
+      setMovies(movies);
+      setCategories(categoryList);
+    };
     fetchData();
   }, []);
   return (
@@ -45,7 +53,8 @@ const App: () => React$Node = () => {
       <Header />
       <Text>buscador...1</Text>
       <Text>categorías</Text>
-      <SuggestionList />
+      <CategoryList list={categories} />
+      <SuggestionList list={movies} />
     </Home>
     // <>
     //   <StatusBar barStyle="dark-content" />
