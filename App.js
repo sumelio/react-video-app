@@ -19,7 +19,6 @@ import {
 } from 'react-native';
 
 import {
-  Header,
   LearnMoreLinks,
   Colors,
   DebugInstructions,
@@ -27,13 +26,12 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Home from './src/screens/containers/home';
+import Header from './src/sections/components/header';
+
 const App: () => React$Node = () => {
   return (
     <Home>
-      <Image
-        source={require('./assets/cat.png')}
-        style={{width: 200, height: 100}}
-      />
+      <Header />
       <Text>Step Freddy</Text>
     </Home>
     // <>
