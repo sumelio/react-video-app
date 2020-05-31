@@ -15,6 +15,7 @@ import {
   Text,
   StatusBar,
   Image,
+  Platform,
 } from 'react-native';
 
 import {
@@ -85,7 +86,10 @@ const styles = StyleSheet.create({
     right: 0,
   },
   body: {
-    backgroundColor: Colors.white,
+    backgroundColor: Platform.select({
+      ios: 'blue',
+      android: 'yellow',
+    }),
   },
   sectionContainer: {
     marginTop: 32,
