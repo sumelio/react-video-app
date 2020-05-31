@@ -27,12 +27,15 @@ import {
 
 import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
+import SuggestionList from './src/videos/containers/suggestion-list';
 
 const App: () => React$Node = () => {
   return (
     <Home>
       <Header />
-      <Text>Step Freddy</Text>
+      <Text>buscador</Text>
+      <Text>categorías</Text>
+      <SuggestionList />
     </Home>
     // <>
     //   <StatusBar barStyle="dark-content" />
