@@ -28,7 +28,7 @@ import {
 import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
-import CategoryList from './src/videos/containers/category-list.js';
+import CategoryList from './src/videos/containers/category-list';
 
 import API from './src/utils/api';
 
@@ -43,7 +43,7 @@ const App: () => React$Node = () => {
         API.getMovies(),
       ]);
 
-      setMovies(movies);
+      setMovies(movieList);
       setCategories(categoryList);
     };
     fetchData();

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {View, FlatList, StyleSheet} from 'react-native';
+import {View, FlatList} from 'react-native';
 import Empty from '../components/empty';
-import Separator from '../components/vertical-separator';
+import Separator from '../../sections/components/horizontal-separator';
 import Suggestion from '../components/suggestion';
+import Layout from '../components/category-list-layout';
 
 class CategoryList extends Component {
   keyExtractor = item => item.id.toString();
@@ -13,7 +14,7 @@ class CategoryList extends Component {
   };
   render() {
     return (
-      <View styles={styles.container}>
+      <Layout title="Categorias">
         <FlatList
           horizontal
           keyExtractor={this.keyExtractor}
@@ -22,15 +23,9 @@ class CategoryList extends Component {
           ItemSeparatorComponent={this.itemSeparator}
           renderItem={this.renderItem}
         />
-      </View>
+      </Layout>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default CategoryList;
