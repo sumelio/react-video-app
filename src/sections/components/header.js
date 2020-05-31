@@ -7,7 +7,7 @@ function Header(props) {
       <SafeAreaView>
         <View style={styles.container}>
           <Image
-            source={require('../../../assets/cat.png')}
+            source={require('../../../assets/logo.jpg')}
             style={styles.logo}
           />
           <View style={styles.right}>{props.children}</View>
