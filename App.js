@@ -64,8 +64,7 @@ const App: () => React$Node = () => {
       <Home>
         <Header />
         <Player />
-        <Text>buscador...1</Text>
-        <Text>categorías</Text>
+        <Text>buscador</Text>
         <CategoryList />
         <SuggestionList />
       </Home>

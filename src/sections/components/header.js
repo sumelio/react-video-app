@@ -19,13 +19,14 @@ function Header(props) {
 
 const styles = StyleSheet.create({
   logo: {
-    width: 80,
-    height: 26,
+    width: 412,
+    height: 60,
+    alignSelf: 'stretch',
     resizeMode: 'contain',
   },
   container: {
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingVertical: 1,
+    paddingHorizontal: 1,
     flexDirection: 'row',
   },
   right: {
