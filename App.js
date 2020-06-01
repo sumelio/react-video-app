@@ -31,33 +31,45 @@ import SuggestionList from './src/videos/containers/suggestion-list';
 import CategoryList from './src/videos/containers/category-list';
 import Player from './src/player/containers/player';
 
+import {Provider} from 'react-redux';
+import store from './store';
+
 import API from './src/utils/api';
 
 const App: () => React$Node = () => {
-  const [movies, setMovies] = useState([]);
-  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const [movieList, categoryList] = await Promise.all([
+      const [suggestionList, categoryList] = await Promise.all([
         API.getSuggestion(10),
         API.getMovies(),
       ]);
-
-      setMovies(movieList);
-      setCategories(categoryList);
+      store.dispatch({
+        type: 'SET_CATEGORY_LIST',
+        payload: {
+          categoryList,
+        },
+      });
+      store.dispatch({
+        type: 'SET_SUGGESTION_LIST',
+        payload: {
+          suggestionList,
+        },
+      });
     };
     fetchData();
   }, []);
   return (
-    <Home>
-      <Header />
-      <Player />
-      <Text>buscador...1</Text>
-      <Text>categorías</Text>
-      <CategoryList list={categories} />
-      <SuggestionList list={movies} />
-    </Home>
+    <Provider store={store}>
+      <Home>
+        <Header />
+        <Player />
+        <Text>buscador...1</Text>
+        <Text>categorías</Text>
+        <CategoryList />
+        <SuggestionList />
+      </Home>
+    </Provider>
     // <>
     //   <StatusBar barStyle="dark-content" />
     //   <SafeAreaView>
