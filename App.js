@@ -32,12 +32,12 @@ import CategoryList from './src/videos/containers/category-list';
 import Player from './src/player/containers/player';
 
 import {Provider} from 'react-redux';
-import store from './store';
+import {PersistGate} from 'redux-persist/integration/react';
+import {store, persistor} from './store';
 
 import API from './src/utils/api';
 
 const App: () => React$Node = () => {
-
   useEffect(() => {
     const fetchData = async () => {
       const [suggestionList, categoryList] = await Promise.all([
@@ -50,6 +50,7 @@ const App: () => React$Node = () => {
           categoryList,
         },
       });
+      debugger
       store.dispatch({
         type: 'SET_SUGGESTION_LIST',
         payload: {
@@ -57,17 +58,20 @@ const App: () => React$Node = () => {
         },
       });
     };
+    debugger
     fetchData();
   }, []);
   return (
     <Provider store={store}>
-      <Home>
-        <Header />
-        <Player />
-        <Text>buscador</Text>
-        <CategoryList />
-        <SuggestionList />
-      </Home>
+      <PersistGate loading={<Text>cargando...</Text>} persistor={persistor}>
+        <Home>
+          <Header />
+          <Player />
+          <Text>buscador</Text>
+          <CategoryList />
+          <SuggestionList />
+        </Home>
+      </PersistGate>
     </Provider>
     // <>
     //   <StatusBar barStyle="dark-content" />

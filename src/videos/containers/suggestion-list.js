@@ -7,6 +7,7 @@ import Suggestion from '../components/suggestion';
 import {connect} from 'react-redux';
 
 function mapStateToProps(state) {
+  debugger
   return {
     list: state.suggestionList,
   };
@@ -20,6 +21,8 @@ class SuggestionList extends Component {
     return <Suggestion {...item} />;
   };
   render() {
+    const list = this.props.list;
+    console.log('this.props.list', this.props.list)
     return (
       <Layout title="Recomendado para ti">
         <FlatList

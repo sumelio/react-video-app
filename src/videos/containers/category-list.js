@@ -7,6 +7,7 @@ import Layout from '../components/category-list-layout';
 import {connect} from 'react-redux';
 
 function mapStateToProps(state) {
+  debugger;
   return {
     list: state.categoryList,
   };
@@ -20,6 +21,8 @@ class CategoryList extends Component {
     return <Category {...item} />;
   };
   render() {
+    const list = this.props.list;
+    console.log('this.props.list', JSON.stringify(this.props.list));
     return (
       <Layout title="Categorias">
         <FlatList

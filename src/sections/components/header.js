@@ -20,7 +20,7 @@ function Header(props) {
 const styles = StyleSheet.create({
   logo: {
     width: 412,
-    height: 60,
+    height: 30,
     alignSelf: 'stretch',
     resizeMode: 'contain',
   },
