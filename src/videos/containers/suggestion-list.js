@@ -7,7 +7,7 @@ import Suggestion from '../components/suggestion';
 import {connect} from 'react-redux';
 
 function mapStateToProps(state) {
-  debugger
+  debugger;
   return {
     list: state.suggestionList,
   };
@@ -17,12 +17,26 @@ class SuggestionList extends Component {
   keyExtractor = item => item.id.toString();
   renderEmtpy = () => <Empty text="No hay sugerencias :(" />;
   itemSeparator = () => <Separator />;
+  viewMovie = item => {
+    this.props.dispatch({
+      type: 'SET_SELECTED_MOVIE',
+      payload: {
+        movie: item,
+      },
+    });
+  };
+
   renderItem = ({item}) => {
-    return <Suggestion {...item} />;
+    return (
+      <Suggestion
+        {...item}
+        onPress={() => {
+          this.viewMovie(item);
+        }}
+      />
+    );
   };
   render() {
-    const list = this.props.list;
-    console.log('this.props.list', this.props.list)
     return (
       <Layout title="Recomendado para ti">
         <FlatList

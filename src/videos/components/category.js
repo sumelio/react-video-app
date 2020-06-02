@@ -1,15 +1,17 @@
 import React from 'react';
 import {View, Text, ImageBackground, StyleSheet} from 'react-native';
 
-function Category(props) {
-  debugger
+function Category({background_image, genres, language}) {
+  debugger;
   return (
     <ImageBackground
       style={styles.wrapper}
       source={{
-        uri: props.background_image,
+        uri: background_image.replace('yts.mx', 'img.yts.mx'),
       }}>
-      <Text style={styles.genre}>{props.language}</Text>
+      <Text style={styles.genre}>
+        {(genres && genres.length && genres[0]) || language}
+      </Text>
     </ImageBackground>
   );
 }
